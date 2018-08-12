@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">practice</string>
+    <string name="channel_id">default</string>
+    <string name="channel_desc">generic channel description</string>
+
+    <string name="app_name_heading">Notification Priority</string>
+    <string name="contacts">Contacts</string>
+    <string name="other_apps">Other Apps</string>
+    <string name="help">Help</string>
+</resources>
