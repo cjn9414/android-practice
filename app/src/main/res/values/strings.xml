@@ -7,4 +7,5 @@
     <string name="contacts">Contacts</string>
     <string name="other_apps">Other Apps</string>
     <string name="help">Help</string>
+    <string name="root_switch_string">Turn on priority settings</string>
 </resources>

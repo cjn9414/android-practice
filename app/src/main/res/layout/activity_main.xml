@@ -9,6 +9,13 @@
         android:orientation="vertical"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent">
+        <Switch
+            android:id="@+id/root-priority-switch"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checked="true"
+            android:text="@string/root_switch_string"
+            android:gravity="start"/>
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

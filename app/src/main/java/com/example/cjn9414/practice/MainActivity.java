@@ -11,43 +11,49 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Switch;
+import android.widget.Toast;
 
 import static java.lang.Thread.sleep;
 
 
-public class MainActivity extends AppCompatActivity {
-    Context appContext;
+public class MainActivity extends AppCompatActivity implements View.OnClickListener{
+    private Context appContext;
+    private Switch rootSwitch;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         createNotificationChannel();
         appContext = getApplicationContext();
-        final NotificationCompat.Builder mBuilder = getNotificationCompat();
-        final NotificationManager notificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
-        final int notificationID = 12345;
-        final Button contactButton = (Button) this.findViewById(R.id.contact_button);
-        final Button otherAppsButton = (Button) this.findViewById(R.id.other_app_button);
-        final Button helpButton = (Button) this.findViewById(R.id.help_button);
-        contactButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                notificationManager.notify(notificationID, mBuilder.build());
+        rootSwitch = findViewById(R.id.root_priority_switch);
+        final Button contactButton = this.findViewById(R.id.contact_button);
+        final Button otherAppsButton = this.findViewById(R.id.other_app_button);
+        final Button helpButton = this.findViewById(R.id.help_button);
+        contactButton.setOnClickListener(this);
+        otherAppsButton.setOnClickListener(this);
+        helpButton.setOnClickListener(this);
+    }
 
-            }
-        });
-        otherAppsButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                //do nothing yet
-            }
-        });
-        helpButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                //do nothing yet
-            }
-        });
+    public void onClick(View view) {
+        switch(view.getId()) {
+            case R.id.contact_button:
+                if (rootSwitch.isChecked()) {
+                    Intent contactIntent = new Intent(this, ContactActivity.class);
+                    startActivity(contactIntent);
+                }
+                break;
+            case R.id.other_app_button:
+//                Intent otherAppIntent = new Intent(this, OtherAppActivity.class);
+//                startActivity(otherAppIntent);
+                break;
+            case R.id.help_button:
+//                Intent helpIntent = new Intent(this, HelpActivty.class);
+//                startActivity(helpIntent);
+                break;
+            default:
+                break;
+        }
     }
 
     private void createNotificationChannel() {
